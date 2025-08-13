@@ -125,6 +125,10 @@ public class Main extends EngineFrame {
         
     }
     
+    private void bubbleSort(int[] array) {
+        
+    }
+    
     private void trocar( int[] array, int i, int min ) {
         int t = array[i];
         array[i] = array[min];
