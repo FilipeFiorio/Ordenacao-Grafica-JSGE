@@ -29,8 +29,8 @@ public class Main extends EngineFrame {
         
         super(
             800,                 // largura                      / width
-            450,                 // algura                       / height
-            "Ordenações",      // título                       / title
+            450,                 // altura                       / height
+            "Ordenações",        // título                       / title
             60,                  // quadros por segundo desejado / target FPS
             true,                // suavização                   / antialiasing
             false,               // redimensionável              / resizable
@@ -103,6 +103,8 @@ public class Main extends EngineFrame {
     public void draw() {
         clearBackground( WHITE );
         desenharArray( arrays.get( copiaAtual ) );
+        drawLine(getScreenWidth() / 2, 0, getScreenWidth() / 2, getScreenHeight(), BLACK);
+        drawLine(0, getScreenHeight() / 2, getScreenWidth(), getScreenHeight() / 2, BLACK );
     }
 
     private void selectionSort( int[] array ) {
@@ -125,7 +127,15 @@ public class Main extends EngineFrame {
         
     }
     
-    private void bubbleSort(int[] array) {
+    private void insertionSort(int[] array) {
+        
+    }
+    
+    private void shellSort(int[] array) {
+        
+    }
+    
+    private void mergeSort(int[] array) {
         
     }
     
@@ -149,11 +159,35 @@ public class Main extends EngineFrame {
             
             fillRectangle(
                     xIni + ( tamanho + espaco ) * i,
-                    yIni - altura,
+                    yIni - altura - espaco,
                     tamanho,
-                    altura, BLUE
+                    altura, 
+                    DARKBLUE
             );
             
+            fillRectangle(
+                    (getScreenWidth() - (xIni + (tamanho - espaco)) * (a.length - i)), 
+                    yIni - altura - espaco, 
+                    tamanho,
+                    altura,
+                    DARKBLUE
+            );
+            
+            fillRectangle(
+                    xIni + (tamanho + espaco) * i,
+                    2 * yIni - altura - espaco,
+                    tamanho,
+                    altura,
+                    DARKBLUE
+            );
+            
+            fillRectangle(
+                    (getScreenWidth() - (xIni + (tamanho - espaco)) * (a.length - i)),
+                    2 * yIni - altura - espaco, 
+                    tamanho, 
+                    altura, 
+                    DARKBLUE 
+            );
         }
         
     }
