@@ -40,7 +40,7 @@ public class Main extends EngineFrame {
         super(
                 800, // largura                      / width
                 600, // altura                       / height
-                "Ordenações", // título                       / title
+                "Ordenação Gráfica - JSGE", // título                       / title
                 60, // quadros por segundo desejado / target FPS
                 true, // suavização                   / antialiasing
                 false, // redimensionável              / resizable
@@ -121,15 +121,15 @@ public class Main extends EngineFrame {
         if(isMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
             if(mouseNoBotao(11, 10, 100, 40)) {
                 reiniciarArray(nProximos.clone());
-                System.out.println("funcionou");
+                System.out.println("Proximos");
             }
             if(mouseNoBotao(122, 10, 100, 40)) {
                 reiniciarArray(array.clone());
-                System.out.println("funcionou");
+                System.out.println("Aleatorio");
             }
             if(mouseNoBotao(233,10,100,40)) {
                 reiniciarArray(pior.clone());
-                System.out.println("funcionou");
+                System.out.println("Pior caso");
             }
         }
 
@@ -177,13 +177,13 @@ public class Main extends EngineFrame {
         fillRoundRectangle(233, 10, 100 , 40, 10, RED);
         drawText("PIOR CASO", 237.5, 26, 16, RAYWHITE);
         
-        drawText("Ordenacao Grafica", getScreenWidth() / 2 + 81, 10, 24, BLACK );
+        drawText("Ordenação Gráfica", getScreenWidth() / 2 + 81, 10, 24, BLACK );
         drawText("JSGE", getScreenWidth() / 2 + 162, 38, 32, BLACK );
         
         //System.out.println(measureTextBounds("PIOR CASO", 16)); //Medir comprimento do texto
         
     }
-
+    
     private void selectionSort(int[] array) {
 
         for (int i = 0; i < array.length; i++) {
@@ -296,8 +296,6 @@ public class Main extends EngineFrame {
     }
     
     private void reiniciarArray(int[] array) {
-        
-        this.array = array;
         
         arraysSelectionSort.clear();
         arraysInsertionSort.clear();
