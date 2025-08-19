@@ -14,6 +14,8 @@ import java.util.List;
 public class Main extends EngineFrame {
 
     private int[] array;
+    private int[] pior;
+    private int[] nProximos;
 
     private List<int[]> arraysSelectionSort;
     private List<int[]> arraysInsertionSort;
@@ -60,27 +62,26 @@ public class Main extends EngineFrame {
     @Override
     public void create() {
 
-        array = new int[]{7, 3, 1, 2, 9, 4, 6, 8, 5, 10};
+        array = new int[] {7, 3, 1, 2, 9, 4, 6, 8, 5, 10};
+        pior = new int[] {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
+        nProximos = new int[] {4, 2, 8, 2, 6, 6, 2, 10, 8, 3};
 
         arraysSelectionSort = new ArrayList<>();
         arraysInsertionSort = new ArrayList<>();
         arraysShellSort = new ArrayList<>();
         arraysMergeSort = new ArrayList<>();
-        
-        
+             
         selectionSort(array.clone());
         insertionSort(array.clone());
         shellSort(array.clone());
         mergeSort(array.clone());
         
-        
-
         tempoParaMudar = 0.5;
 
         tamanho = 20;
         espaco = 5;
-        xIni = 10;
-        yIni = getScreenHeight() / 2;
+        xIni = 25;
+        yIni = getScreenHeight() / 2 - 10;
 
     }
 
@@ -101,7 +102,7 @@ public class Main extends EngineFrame {
 
         contadorTempo += delta;
 
-        if (contadorTempo >= tempoParaMudar) {
+        if (contadorTempo >= tempoParaMudar) {  
             contadorTempo = 0;
             if (copiaAtualSelectionSort < arraysSelectionSort.size() - 1) {
                 copiaAtualSelectionSort++;
@@ -114,6 +115,21 @@ public class Main extends EngineFrame {
             }
             if (copiaAtualMergeSort < arraysMergeSort.size() - 1) {
                 copiaAtualMergeSort++;
+            }
+        }
+        
+        if(isMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+            if(mouseNoBotao(11, 10, 100, 40)) {
+                reiniciarArray(nProximos.clone());
+                System.out.println("funcionou");
+            }
+            if(mouseNoBotao(122, 10, 100, 40)) {
+                reiniciarArray(array.clone());
+                System.out.println("funcionou");
+            }
+            if(mouseNoBotao(233,10,100,40)) {
+                reiniciarArray(pior.clone());
+                System.out.println("funcionou");
             }
         }
 
@@ -130,20 +146,42 @@ public class Main extends EngineFrame {
     public void draw() {
         clearBackground(LIGHTGRAY);
         
-        drawText("SelectionSort", xIni, 50, 20, BLACK);
-        desenharArray(arraysSelectionSort.get(copiaAtualSelectionSort), xIni, yIni );
+        drawText("SelectionSort", xIni, 75, 20, BLACK);
+        desenharArray(arraysSelectionSort.get(copiaAtualSelectionSort), xIni, yIni + 20 );
         
-        drawText("InsertionSort", getScreenWidth() / 2 + xIni, 50, 20, BLACK);
-        desenharArray(arraysInsertionSort.get(copiaAtualInsertionSort), getScreenWidth() / 2 + xIni, yIni );
+        drawText("InsertionSort", getScreenWidth() / 2 + xIni, 75, 20, BLACK);
+        desenharArray(arraysInsertionSort.get(copiaAtualInsertionSort), getScreenWidth() / 2 + xIni, yIni + 20 );
         
-        drawText("ShellSort", xIni, yIni + 50, 20, BLACK);
+        drawText("ShellSort", xIni, yIni + 75, 20, BLACK);
         desenharArray(arraysShellSort.get(copiaAtualShellSort), xIni, 2 * yIni );
         
-        drawText("MergeSort", getScreenWidth()/ 2 + xIni, yIni + 50, 20, BLACK);
+        drawText("MergeSort", getScreenWidth()/ 2 + xIni, yIni + 75, 20, BLACK);
         desenharArray(arraysMergeSort.get(copiaAtualMergeSort), getScreenWidth() / 2 + xIni, 2 * yIni);
         
-        drawLine(getScreenWidth() / 2, 0, getScreenWidth() / 2, getScreenHeight(), BLACK);
-        drawLine(0, getScreenHeight() / 2, getScreenWidth(), getScreenHeight() / 2, BLACK);
+        //Divisoes das ordenacoes
+        drawRoundRectangle(10, 60, getScreenWidth() / 2 - 10, 260, 10, BLACK );
+        drawRoundRectangle(getScreenWidth() / 2 + 10, 60, getScreenWidth() / 2 - 20, 260, 10, BLACK );
+        drawRoundRectangle(10, getScreenHeight() / 2 + 30, getScreenWidth() / 2 - 10, 260, 10, BLACK );
+        drawRoundRectangle(getScreenWidth() / 2 + 10, getScreenHeight() / 2 + 30, getScreenWidth() / 2 - 20, 260, 10, BLACK );
+        
+        //Botoes do cabeçalho;
+        drawRoundRectangle(10, 9, 101, 41, 10, BLACK);
+        fillRoundRectangle(11, 10, 100 , 40, 10, LIME);
+        drawText("PROXIMOS", 20, 26, 16, RAYWHITE);
+        
+        drawRoundRectangle(121, 9, 101, 41, 10, BLACK);
+        fillRoundRectangle(122, 10, 100 , 40, 10, ORANGE);
+        drawText("ALEATORIO", 126.5, 26, 16, RAYWHITE);
+        
+        drawRoundRectangle(232, 9, 101, 41, 10, BLACK);
+        fillRoundRectangle(233, 10, 100 , 40, 10, RED);
+        drawText("PIOR CASO", 237.5, 26, 16, RAYWHITE);
+        
+        drawText("Ordenacao Grafica", getScreenWidth() / 2 + 81, 10, 24, BLACK );
+        drawText("JSGE", getScreenWidth() / 2 + 162, 38, 32, BLACK );
+        
+        //System.out.println(measureTextBounds("PIOR CASO", 16)); //Medir comprimento do texto
+        
     }
 
     private void selectionSort(int[] array) {
@@ -255,6 +293,41 @@ public class Main extends EngineFrame {
             j++;
             k++;
         }
+    }
+    
+    private void reiniciarArray(int[] array) {
+        
+        this.array = array;
+        
+        arraysSelectionSort.clear();
+        arraysInsertionSort.clear();
+        arraysShellSort.clear();
+        arraysMergeSort.clear();
+        
+        copiaAtualSelectionSort = 0;
+        copiaAtualInsertionSort = 0;
+        copiaAtualShellSort = 0;
+        copiaAtualMergeSort = 0;
+        
+        selectionSort(array.clone());
+        insertionSort(array.clone());
+        shellSort(array.clone());
+        mergeSort(array.clone());
+        
+        contadorTempo = 0;
+        
+    }
+    
+    private boolean mouseNoBotao(int x, int y, int largura, int altura) {
+        
+        int mouseX = getMouseX();
+        int mouseY = getMouseY();
+        
+        return (mouseX >= x &&
+                mouseX <= x + largura&&
+                mouseY >= y &&
+                mouseY <= y + altura
+               );
     }
 
     
