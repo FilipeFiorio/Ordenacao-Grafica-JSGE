@@ -121,15 +121,15 @@ public class Main extends EngineFrame {
         if(isMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
             if(mouseNoBotao(11, 10, 100, 40)) {
                 reiniciarArray(nProximos.clone());
-                System.out.println("Proximos");
+                //System.out.println("Proximos");
             }
             if(mouseNoBotao(122, 10, 100, 40)) {
                 reiniciarArray(array.clone());
-                System.out.println("Aleatorio");
+                //System.out.println("Aleatorio");
             }
             if(mouseNoBotao(233,10,100,40)) {
                 reiniciarArray(pior.clone());
-                System.out.println("Pior caso");
+                //System.out.println("Pior caso");
             }
         }
 
@@ -180,7 +180,8 @@ public class Main extends EngineFrame {
         drawText("Ordenação Gráfica", getScreenWidth() / 2 + 81, 10, 24, BLACK );
         drawText("JSGE", getScreenWidth() / 2 + 162, 38, 32, BLACK );
         
-        //System.out.println(measureTextBounds("PIOR CASO", 16)); //Medir comprimento do texto
+        // Medir comprimento do texto
+        //System.out.println(measureTextBounds("PIOR CASO", 16));
         
     }
     
