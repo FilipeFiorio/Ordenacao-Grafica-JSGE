@@ -100,7 +100,7 @@ public class Main extends EngineFrame {
 
             if (copiaAtualSelectionSort < arraysSelectionSort.size() - 1) {
                 copiaAtualSelectionSort++;
-            } 
+            }
 
             if (copiaAtualInsertionSort < arraysInsertionSort.size() - 1) {
                 copiaAtualInsertionSort++;
@@ -164,7 +164,7 @@ public class Main extends EngineFrame {
         drawText("ShellSort - O(n²)", coluna1, linha2 - 20, 20, BLACK);
         desenharArray(arraysShellSort.get(copiaAtualShellSort), coluna1, linha2 + painelAltura - 30);
 
-        drawText("MergeSort - O(nlg.n)", coluna2, linha2 - 20, 20, BLACK);
+        drawText("MergeSort - O(n.lgn)", coluna2, linha2 - 20, 20, BLACK);
         desenharArray(arraysMergeSort.get(copiaAtualMergeSort), coluna2, linha2 + painelAltura - 30);
 
         drawText("QuickSort - O(n²)", coluna1, linha3 - 20, 20, BLACK);
@@ -184,11 +184,11 @@ public class Main extends EngineFrame {
         // Desenha os botoes
         drawRoundRectangle(10, 9, 101, 41, 10, BLACK);
         fillRoundRectangle(11, 10, 100, 40, 10, LIME);
-        drawText("PROXIMOS", 20, 26, 16, RAYWHITE);
+        drawText("PRÓXIMOS", 20, 26, 16, RAYWHITE);
 
         drawRoundRectangle(121, 9, 101, 41, 10, BLACK);
         fillRoundRectangle(122, 10, 100, 40, 10, ORANGE);
-        drawText("ALEATORIO", 126.5, 26, 16, RAYWHITE);
+        drawText("ALEATÓRIO", 126.5, 26, 16, RAYWHITE);
 
         drawRoundRectangle(232, 9, 101, 41, 10, BLACK);
         fillRoundRectangle(233, 10, 100, 40, 10, RED);
